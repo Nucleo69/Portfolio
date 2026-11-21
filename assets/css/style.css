@@ -1346,8 +1346,28 @@ img {
 }
 
 /* ==========================================================================
-   Responsive Breakpoints
+   Responsive Breakpoints & Mobile Optimization
    ========================================================================== */
+@media (hover: none) {
+  /* On touch devices, gracefully reveal caption as an understated bottom plate */
+  .gallery-hover-card {
+    opacity: 1;
+    visibility: visible;
+    background: linear-gradient(180deg, transparent 40%, rgba(24, 25, 26, 0.9) 100%);
+    padding: 14px 16px;
+  }
+  .gallery-hover-title {
+    font-size: 1.05rem;
+  }
+  .gallery-hover-medium {
+    font-size: 0.72rem;
+  }
+  .mosaic-hover-plate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 1024px) {
   .hero-grid {
     grid-template-columns: 1fr;
@@ -1378,6 +1398,37 @@ img {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --nav-height: 64px;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  /* Header on Mobile */
+  .brand-status-meta {
+    display: none; /* Keep header clean on small screens */
+  }
+
+  .brand-title {
+    font-size: 1.35rem;
+  }
+
+  .header-actions {
+    gap: 8px;
+  }
+
+  .lang-selector-group {
+    padding: 2px 4px;
+    gap: 2px;
+  }
+
+  .lang-btn-item {
+    font-size: 0.7rem;
+    padding: 3px 5px;
+  }
+
   .nav-list {
     position: fixed;
     top: var(--nav-height);
@@ -1386,9 +1437,9 @@ img {
     background-color: var(--bg-primary);
     border-bottom: 1px solid var(--border-light);
     flex-direction: column;
-    padding: 24px;
-    gap: 16px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    padding: 20px 24px;
+    gap: 14px;
+    box-shadow: 0 12px 24px rgba(24, 25, 26, 0.08);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-8px);
@@ -1401,20 +1452,246 @@ img {
   }
   .mobile-nav-toggle {
     display: block;
+    padding: 5px 9px;
+    font-size: 0.8rem;
   }
+
+  /* Hero on Mobile */
+  .hero-section {
+    padding-top: calc(var(--nav-height) + 24px);
+    padding-bottom: 60px;
+    min-height: auto;
+  }
+
+  .hero-main-heading {
+    font-size: clamp(2.4rem, 8.5vw, 3.4rem);
+  }
+
+  .hero-sub-statement {
+    font-size: 1.35rem;
+  }
+
   .hero-data-strip {
     grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    padding: 16px 0;
   }
+
+  .editorial-portrait-frame {
+    max-width: 320px;
+    height: 400px;
+    padding: 8px;
+  }
+
+  .hero-action-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .hero-action-row .editorial-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 13px 18px;
+  }
+
+  /* Sections Spacing */
+  .section {
+    padding: 60px 0;
+  }
+
+  .section-label-bar {
+    margin-bottom: 24px;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 6.5vw, 2.6rem);
+  }
+
+  /* Biography & Vignettes on Mobile */
+  .biography-lead-paragraph {
+    font-size: 1.3rem;
+  }
+
+  .biography-lead-paragraph::first-letter {
+    font-size: 2.8rem;
+    margin-right: 8px;
+  }
+
+  .vignette-card {
+    grid-template-columns: 80px 1fr;
+    gap: 14px;
+    padding: 12px;
+  }
+
+  .vignette-thumb-frame {
+    width: 80px;
+    height: 80px;
+  }
+
+  /* Education on Mobile */
+  .education-primary-card {
+    padding: 24px 18px;
+  }
+
+  .edu-card-top-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .edu-gpa-badge {
+    align-self: flex-start;
+  }
+
+  .edu-initiatives-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
   .secondary-education-row {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
+
+  .secondary-edu-card {
+    padding: 22px 18px;
+  }
+
+  /* Zurich on Mobile */
   .swiss-editorial-mosaic {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
+
   .swiss-mosaic-tile.tall-tile {
     grid-row: auto;
   }
-  .section {
-    padding: 70px 0;
+
+  /* Research Cards on Mobile */
+  .research-project-card {
+    padding: 24px 18px;
+  }
+
+  /* Gallery Grid on Mobile: Clean 2-column showcase */
+  .gallery-strip-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .gallery-tile-item {
+    aspect-ratio: 1 / 1.2;
+  }
+
+  /* Methods Box on Mobile */
+  .methods-box {
+    padding: 24px 18px;
+  }
+
+  .methods-box-title {
+    font-size: 1.3rem;
+  }
+
+  /* Contact & Form Mobile Perfection */
+  .editorial-instagram-card {
+    padding: 24px 18px;
+  }
+
+  .channel-card-item {
+    padding: 14px 16px;
+  }
+
+  .editorial-form-wrapper {
+    padding: 24px 18px; /* Roomy on mobile without squeezing */
+  }
+
+  .contact-text-input,
+  .contact-textarea-field {
+    font-size: 16px; /* Crucial: Prevents iOS Safari from auto-zooming on focus */
+    padding: 13px 14px;
+    min-height: 46px;
+  }
+
+  .contact-textarea-field {
+    min-height: 110px;
+  }
+
+  .editorial-form-wrapper form div[style*="display: flex"] {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .editorial-form-wrapper .editorial-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 13px 16px;
+  }
+
+  /* Lightbox on Mobile */
+  .lightbox-modal {
+    padding: 16px;
+  }
+
+  .lightbox-image-target {
+    max-height: 68vh;
+  }
+
+  .lightbox-close-btn {
+    top: -38px;
+    right: 0;
+    font-size: 0.85rem;
+    padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 2px;
+  }
+
+  /* Footer on Mobile */
+  .footer-top-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  /* Relax text justification on very narrow phones to prevent word spacing gaps */
+  .text-justify {
+    text-align: left;
+  }
+
+  .editorial-portrait-frame {
+    max-width: 290px;
+    height: 360px;
+  }
+
+  .hero-main-heading {
+    font-size: 2.35rem;
+  }
+
+  .hero-sub-statement {
+    font-size: 1.25rem;
+  }
+
+  .data-strip-val {
+    font-size: 1.2rem;
+  }
+
+  .gallery-strip-container {
+    grid-template-columns: 1fr; /* Single column on tiny screens */
+    gap: 16px;
+  }
+
+  .gallery-tile-item {
+    aspect-ratio: 1 / 1.1;
   }
 }
